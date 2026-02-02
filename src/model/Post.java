@@ -71,7 +71,6 @@ public class Post {
         return "Post{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 ", createdDate='" + createdDate + '\'' +
                 '}';

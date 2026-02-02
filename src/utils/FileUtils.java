@@ -11,7 +11,7 @@ public class FileUtils {
 
     public static void saveToFile(List<Post> posts){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
-            bw.write("id, title, author, createdDate");
+            bw.write("id,title,author,createdDate");
             bw.newLine();
 
             for (Post p : posts) {
@@ -32,7 +32,7 @@ public class FileUtils {
             br.readLine();
 
             while ((line = br.readLine()) != null) {
-                String[] arr = line.split("\\|");
+                String[] arr = line.split(",");
                 posts.add(new Post(arr[0], arr[1], "",arr[2], arr[3]));
             }
             System.out.println("Successful to read from file");
