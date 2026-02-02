@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtils {
-    private static final String FILE_NAME = "posts.txt";
+    private static final String FILE_NAME = "posts.csv";
 
     public static void saveToFile(List<Post> posts){
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
+            bw.write("id, title, author, createdDate");
+            bw.newLine();
+
             for (Post p : posts) {
                 bw.write(p.toFileString());
                 bw.newLine();
@@ -26,9 +29,11 @@ public class FileUtils {
 
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
+            br.readLine();
+
             while ((line = br.readLine()) != null) {
                 String[] arr = line.split("\\|");
-                posts.add(new Post(arr[0], arr[1], arr[2], arr[3], arr[4]));
+                posts.add(new Post(arr[0], arr[1], "",arr[2], arr[3]));
             }
             System.out.println("Successful to read from file");
         } catch (IOException e) {
