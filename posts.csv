@@ -1,7 +1,8 @@
 id,title,author,createdDate
-Post{id='P001', title='Mèo', author='Trieu', createdDate='2026-02-02 17:23:39'}
-Post{id='P002', title='Chó', author='Admin', createdDate='2026-02-02 17:24:03'}
-Post{id='P003', title='Gà', author='Q.Anh', createdDate='2026-02-02 17:25:03'}
-Post{id='P004', title='Bò', author='Geewoni', createdDate='2026-02-02 17:26:08'}
-Post{id='P006', title='Heo', author='Go Youn Jung', createdDate='2026-02-02 17:28:12'}
-Post{id='P005', title='Vịt', author='Sơn Tùng MTP', createdDate='2026-02-02 17:28:55'}
+P001,Mèo,Trieu,2026-02-02 17:23:39
+P002,Chó,Admin,2026-02-02 17:24:03
+P003,Gà,Q.Anh,2026-02-02 17:25:03
+P004,Bò,Geewoni,2026-02-02 17:26:08
+P006,Heo,Go Youn Jung,2026-02-02 17:28:12
+P005,Vịt,Sơn Tùng MTP,2026-02-02 17:28:55
+P010,Ngan,Trìu,2026-02-02 18:11:52

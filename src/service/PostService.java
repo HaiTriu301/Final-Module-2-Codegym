@@ -2,6 +2,7 @@ package service;
 
 import exception.InvalidPostException;
 import model.Post;
+import org.w3c.dom.ls.LSOutput;
 import utils.FileUtils;
 import utils.ValidationUtils;
 
@@ -64,8 +65,34 @@ public class PostService {
         }
 
         for (Post post : posts) {
-            System.out.println(post);
+            System.out.println(post.toFileString());
         }
+
+        System.out.println("\nWould you have to see the content? (Y/N)");
+        String choice = scanner.nextLine();
+
+        if (choice.equalsIgnoreCase("y")) {
+            showPostContentById();
+        }
+    }
+
+    private void showPostContentById() {
+        System.out.print("Enter the ID that you want to see the content: ");
+        String id = scanner.nextLine().trim();
+
+        for (Post post : posts) {
+            if (post.getId().equalsIgnoreCase(id)) {
+                if (post.getContent().isEmpty()) {
+                    System.out.println("Post content is empty");
+                } else{
+                    System.out.println(post.getContent());
+                }
+
+                return;
+            }
+        }
+
+        System.out.println("ID of post not found");
     }
 
     public void findById() {
@@ -89,6 +116,10 @@ public class PostService {
                 System.out.println(post);
             }
         }
+    }
+
+    public void displayContent() {
+
     }
 
     public void saveFile() {

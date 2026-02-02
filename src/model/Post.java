@@ -59,20 +59,13 @@ public class Post {
 
     @Override
     public String toString() {
-        return "Post{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", createdDate='" + createdDate + '\'' +
-                '}';
+        return id + " | " +
+                title + " | " +
+                author + " | " +
+                createdDate;
     }
 
     public String toFileString() {
-        return "Post{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", createdDate='" + createdDate + '\'' +
-                '}';
+        return id + "," + title + "," + author + "," + createdDate;
     }
 }
