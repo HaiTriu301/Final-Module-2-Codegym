@@ -9,6 +9,7 @@ import utils.ValidationUtils;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PostService {
@@ -86,12 +87,17 @@ public class PostService {
 
         for (Post post : posts) {
             if (post.getId().equalsIgnoreCase(id)) {
+
                 if (post.getContent().isEmpty()) {
-                    System.out.println("Post content is empty");
-                } else{
-                    System.out.println(post.getContent());
+                    String content = FileUtils.getContentByPostId(id);
+                    post.setContent(content);
                 }
 
+                if (post.getContent().isEmpty()) {
+                    System.out.println("Post content is empty");
+                } else {
+                    System.out.println(post.getContent());
+                }
                 return;
             }
         }
@@ -120,6 +126,40 @@ public class PostService {
                 System.out.println(post);
             }
         }
+    }
+
+    public void sortById() {
+        int n = posts.size();
+
+        for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                int id1 = extractNumber(posts.get(j).getId());
+                int id2 = extractNumber(posts.get(j + 1).getId());
+
+                if (id1 > id2) {
+                    swap(j, j + 1);
+                    swapped = true;
+                }
+            }
+
+            if (!swapped) {
+                break;
+            }
+        }
+
+        System.out.println("Successful to sort");
+    }
+
+    public void swap(int i, int j){
+        Post temp = posts.get(i);
+        posts.set(i, posts.get(j));
+        posts.set(j, temp);
+    }
+
+    private int extractNumber(String id) {
+        return Integer.parseInt(id.replaceAll("\\D+", ""));
     }
 
     public void saveFile() {

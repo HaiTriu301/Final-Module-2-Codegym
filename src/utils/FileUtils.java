@@ -39,20 +39,13 @@ public class FileUtils {
 
         try (
                 BufferedReader br1 = new BufferedReader(new FileReader(FILE_POST));
-                BufferedReader br2 = new BufferedReader(new FileReader(FILE_CONTENT))
         ) {
             String line;
             br1.readLine();
-            br2.readLine();
 
             while ((line = br1.readLine()) != null) {
                 String[] arr = line.split(",");
                 posts.add(new Post(arr[0], arr[1], "",arr[2], arr[3]));
-            }
-
-            while ((line = br2.readLine()) != null) {
-                String[] arr = line.split(",");
-                posts.add(new Post(arr[0], "", arr[1], "", ""));
             }
             System.out.println("Successful to read from file");
         } catch (IOException e) {
@@ -61,4 +54,32 @@ public class FileUtils {
 
         return posts;
     }
+
+    public static String getContentByPostId(String postId) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_CONTENT))) {
+            String line;
+            br.readLine();
+
+            while ((line = br.readLine()) != null) {
+                int commaIndex = line.indexOf(",");
+                if (commaIndex == -1) continue;
+
+                String id = line.substring(0, commaIndex);
+                if (id.equalsIgnoreCase(postId)) {
+                    String content = line.substring(commaIndex + 1);
+
+                    if (content.startsWith("\"") && content.endsWith("\"")) {
+                        content = content.substring(1, content.length() - 1)
+                                .replace("\"\"", "\"");
+                    }
+                    return content;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("File content.csv not found");
+        }
+
+        return "";
+    }
+
 }
