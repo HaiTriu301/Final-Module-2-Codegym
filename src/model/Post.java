@@ -68,4 +68,8 @@ public class Post {
     public String toFileString() {
         return id + "," + title + "," + author + "," + createdDate;
     }
+
+    public String toContentString(){
+        return id + "," + content;
+    }
 }

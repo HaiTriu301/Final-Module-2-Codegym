@@ -73,6 +73,10 @@ public class PostService {
 
         if (choice.equalsIgnoreCase("y")) {
             showPostContentById();
+        } else if (choice.equalsIgnoreCase("n")){
+            return;
+        } else {
+            System.out.println("Error: invalid choice");
         }
     }
 
@@ -116,10 +120,6 @@ public class PostService {
                 System.out.println(post);
             }
         }
-    }
-
-    public void displayContent() {
-
     }
 
     public void saveFile() {
