@@ -2,14 +2,12 @@ package service;
 
 import exception.InvalidPostException;
 import model.Post;
-import org.w3c.dom.ls.LSOutput;
 import utils.FileUtils;
 import utils.ValidationUtils;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class PostService {
@@ -69,7 +67,7 @@ public class PostService {
             System.out.println(post.toFileString());
         }
 
-        System.out.println("\nWould you have to see the content? (Y/N)");
+        System.out.print("\nWould you have to see the content? (Y/N): ");
         String choice = scanner.nextLine();
 
         if (choice.equalsIgnoreCase("y")) {
@@ -149,7 +147,7 @@ public class PostService {
             }
         }
 
-        System.out.println("Successful to sort");
+        System.out.println("Successful");
     }
 
     public void swap(int i, int j){

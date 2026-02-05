@@ -36,22 +36,21 @@ public class FileUtils {
 
     public static List<Post> readFromFile() {
         List<Post> posts = new ArrayList<>();
-
-        try (
-                BufferedReader br1 = new BufferedReader(new FileReader(FILE_POST));
-        ) {
+        try (BufferedReader br1 = new BufferedReader(new FileReader(FILE_POST))) {
             String line;
             br1.readLine();
 
             while ((line = br1.readLine()) != null) {
                 String[] arr = line.split(",");
-                posts.add(new Post(arr[0], arr[1], "",arr[2], arr[3]));
+                String id = arr[0];
+
+                String content = getContentByPostId(id);
+                posts.add(new Post(id, arr[1], content, arr[2], arr[3]));
             }
             System.out.println("Successful to read from file");
         } catch (IOException e) {
-            System.out.println("File is not exist");
+            System.out.println("File does not exist");
         }
-
         return posts;
     }
 
